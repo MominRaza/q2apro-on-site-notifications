@@ -1,37 +1,41 @@
 .qa-nav-user {
-	position:relative;
 	white-space:normal;
 }
+.qa-nav-user .qa-logged-in{
+	padding: 10px 16px;
+	font-weight: unset;
+}
 #osnbox {
-	position:relative;
+	position: absolute;
+	top: 24px;
+	right: 16px;
 	display:inline-block;
 	text-align: left;
 }
 .nfyWrap {
-	position: absolute;
-	top: 31px;
-	left: -280px;
-	width: 460px;
-	background: #fefefe;
-	padding: 0;
-	font-family: Arial,Helvetica,sans-serif;
-	box-shadow: 4px 4px 7px #ababab;
+	position: fixed;
+	top: 0;
+	left: -50%;
+	width: 500px;
+	box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%),
+	0px 24px 38px 3px rgb(0 0 0 / 14%),
+	0px 9px 46px 8px rgb(0 0 0 / 12%);
 	z-index: 999;
+	border-radius: 4px;
+	background-color: var(--surface-solid, var(--surface));
+	overflow: hidden;
 }
 .nfyWrap .nfyTop {
-	font-size: 11px;
-	line-height: 12px;
-	padding: 5px;
-	color: #333;
-	background: #eaeaea;
-	border: 1px solid #CCC;
-	border-radius: 3px 3px 0 0;
+	font-size: 16px;
+	padding: 10px;
+	color: var(--on-primary);
+	background: var(--primary);
 }
 .nfyWrap .nfyContainer {
 	width: 100%;
 	overflow-y: auto;
 	padding: 0;
-	height: 240px;
+	height: 300px;
 }
 .nfyWrap .nfyFooter {
 	padding: 5px;
@@ -47,17 +51,19 @@
 	width: 100%;
 	float: left;
 	margin: 0;
-	padding: 3px 0px 12px 0;
-	border-bottom: 1px dashed #CCC;
+	padding: 5px;
+	border-bottom: .1px solid #888;
 }
-.nfyWrap .itemBox-new {
-	background: #FE8;
+.nfyWrap .itemBox:last-child,
+.nfyWrap .itemBox-new:last-child{
+	border-bottom: 0;
 }
+.nfyWrap .itemBox-new,
 .nfyWrap .itemBox:hover {
-	background: #EEE;
+	background: rgba(var(--primary-rgb), 25%);
 }
-.nfyWrap .itemBoxNew {
-	background-color: #ffffe2;
+.nfyWrap .itemBox-new:hover {
+	background: rgba(var(--primary-rgb), 35%);
 }
 .nfyWrap .nfyItemLine {
 	display:inline-block;
@@ -67,8 +73,6 @@
 }
 .nfyWrap .nfyItemLine a {
 	font-size: 12px;
-	color: #44A;
-	text-decoration: none;
 }
 .nfyWrap .nfyItemLine p {
 	display:inline-block;
@@ -82,43 +86,46 @@
 	margin-bottom: 4px;
 	display: inline-block;
 }
-.nfyWrap .nfyItemLine a:hover {
-	color: #55F;
-}
 .nicon {
 	display: inline-block;
-	width: 16px;
-	height: 16px;
-	margin: 4px 4px 0 5px;
+	margin: 3px 16px 0 8px;
 	vertical-align: top;
 }
-.nicon.nanswer {
-	background:url(icons.png) no-repeat 0 0;
+.nicon::before {
+	font-family: "Material Icons";
 }
-.nicon.ncomment {
-	background:url(icons.png) no-repeat 0 -16px;
+.nicon.nanswer::before {
+	content: "chat";
+	color: var(--selected);
 }
-.nicon.nvoteup {
-	background:url(icons.png) no-repeat 0 -32px;
+.nicon.ncomment::before {
+	content: "textsms";
+	color: var(--link);
 }
-.nicon.nvotedown {
-	background:url(icons.png) no-repeat 0 -48px;
+.nicon.nvoteup::before {
+	content: "thumb_up_alt";
+	color: var(--link);
 }
-.nicon.nbestanswer {
-	background:url(icons.png) no-repeat 0 -64px;
+.nicon.nvotedown::before {
+	content: "thumb_down_alt";
+	color: var(--error);
 }
-.nicon.nmessage {
-	background:url(icons.png) no-repeat 0 -80px;
+.nicon.nbestanswer::before {
+	content: "done_all";
+	color: var(--selected);
 }
-.nicon.nwallpost {
-	background:url(icons.png) no-repeat 0 -96px;
+.nicon.nmessage::before {
+	content: "mail";
+}
+.nicon.nwallpost::before {
+	content: "post_add";
 }
 .nfyWhat {
 	padding-top:3px;
 }
 .nfyTime {
-	color: #888;
-	display:block !important;
+	opacity: .6;
+	display: block !important;
 }
 .qa-history-event-nill {
 	display: inline-block;
@@ -137,20 +144,37 @@
 }
 .osn-new-events-link {
 	position: relative;
+	cursor: pointer;
+}
+.osn-new-events-link::before {
+    content: "notifications_none";
+    font-family: "Material Icons";
+	position: absolute;
+	top: -5px;
+	left: -18px;
+    font-size: 24px;
+    color: var(--on-surface);
 }
 .osn-new-events-link:hover {
 	text-decoration:none !important;
 }
+.notifybub{
+	border-radius: 10px;
+	height: 12px;
+	width: 12px;
+	display: block;
+	font-size: 8px;
+	overflow: hidden;
+	text-align: center;
+	position: absolute;
+	top: -6px;
+	right: -7px;
+}
 /* notifybub (N) */
 .ntfy-event-new, .ntfy-event-nill {
-	background-color: #FF5;
-	color: #000;
-	border: 1px solid #EEEE00;
-	border-radius: 2px;
-	cursor: pointer;
-	font-size: 11px;
-	font-weight: bold;
-	padding: 3px 4px;
+	background-color: var(--selected);
+	color: var(--on-selected);
+	border: 1px solid var(--selected);
 	vertical-align: top;
 }
 .ntfy-read, .ntfy-event-nill {
@@ -159,9 +183,18 @@
 	color: #555;
 }
 #nfyReadClose {
-	float:right;
-	cursor:pointer;
-	color:#333;
+	float: right;
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	overflow: hidden;
+	visibility: hidden;
+	color: var(--on-primary);
+}
+#nfyReadClose::before {
+	content: "close";
+	font-family: "Material Icons";
+	visibility: visible;
 }
 
 /* snow flat theme */
@@ -183,20 +216,15 @@
 
 /* smartphones */
 @media only screen and (max-width:480px) {
-
 	.nfyWrap {
-		position: fixed;
-		top: 100px;
-		left: 2%;
-		width: 95%;
+		left: -10%;
+		width: 120%;
 	}
 	.nfyWrap .itemBox, .nfyWrap .itemBox-new {
-		width:95%;
-		padding: 3px 0px 12px 10px;
+		width: 100%;
 	}
 	.nfyWrap .nfyItemLine {
 		display: inline-block;
-		width: 90%;
+		width: calc(100% - 50px);
 	}
-
 }
